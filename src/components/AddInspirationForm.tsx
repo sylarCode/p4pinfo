@@ -14,6 +14,7 @@ export function AddInspirationForm({ categories }: { categories: Category[] }) {
 
   return (
     <form
+      id="add"
       ref={formRef}
       className="add-form"
       onSubmit={(event) => {

@@ -1,0 +1,88 @@
+// Kindled — follow friends and see what inspires them
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  name      String
+  bio       String   @default("")
+  location  String   @default("")
+  avatarHue Int      @default(160)
+  createdAt DateTime @default(now())
+
+  inspirations Inspiration[]
+  followers    Follow[]      @relation("following")
+  following    Follow[]      @relation("follower")
+}
+
+model Follow {
+  id          String   @id @default(cuid())
+  followerId  String
+  followingId String
+  createdAt   DateTime @default(now())
+
+  follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, followingId])
+  @@index([followingId])
+}
+
+/// Categories are creator-managed only — users cannot create them.
+model Category {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String   @default("")
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  inspirations Inspiration[]
+}
+
+model Inspiration {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @default("")
+  location    String   @default("")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId     String
+  categoryId String
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  tags     InspirationTag[]
+
+  @@index([userId, categoryId])
+  @@index([location])
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+
+  inspirations InspirationTag[]
+}
+
+model InspirationTag {
+  inspirationId String
+  tagId         String
+
+  inspiration Inspiration @relation(fields: [inspirationId], references: [id], onDelete: Cascade)
+  tag         Tag         @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([inspirationId, tagId])
+  @@index([tagId])
+}

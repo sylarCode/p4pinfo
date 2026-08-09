@@ -91,7 +91,7 @@ export default async function HomePage({ searchParams }: PageProps) {
       <section className="section site-shell">
         <div className="section__head">
           <div>
-            <h2>{hasFilters ? "Matches" : "Fresh kindling"}</h2>
+            <h2>{hasFilters ? "Matches" : "Latest shares"}</h2>
             <p>
               {hasFilters
                 ? "Filtered by the categories, tags, and places you chose."

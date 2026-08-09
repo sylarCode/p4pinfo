@@ -1,4 +1,4 @@
-// Kindled — follow friends and see what inspires them
+// p4pinfo — follow friends and see what inspires them
 
 generator client {
   provider = "prisma-client"

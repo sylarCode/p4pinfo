@@ -16,8 +16,8 @@ export function SiteHeader({
   return (
     <header className="site-header">
       <div className="site-header__inner">
-        <Link href="/" className="brand-mark" aria-label="Kindled home">
-          <span className="brand-mark__word">Kindled</span>
+        <Link href="/" className="brand-mark" aria-label="p4pinfo home">
+          <span className="brand-mark__word">p4pinfo</span>
         </Link>
 
         <nav className="site-nav" aria-label="Primary">

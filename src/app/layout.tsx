@@ -16,9 +16,9 @@ const body = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Kindled — see what inspires your people",
+  title: "p4pinfo — see what inspires your people",
   description:
-    "Follow friends and browse the movies, books, restaurants, and useful items that kindle them.",
+    "Follow friends and browse the movies, books, restaurants, and useful items that inspire them.",
 };
 
 export default async function RootLayout({
@@ -44,7 +44,7 @@ export default async function RootLayout({
         <main className="flex-1">{children}</main>
         <footer className="site-footer">
           <div className="site-shell">
-            <strong>Kindled</strong> — categories are curated by the creator;
+            <strong>p4pinfo</strong> — categories are curated by the creator;
             tags are yours.
           </div>
         </footer>

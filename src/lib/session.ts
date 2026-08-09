@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 
-export const SESSION_COOKIE = "kindled_user";
+export const SESSION_COOKIE = "p4p_user";
 
 export async function getCurrentUser() {
   const jar = await cookies();

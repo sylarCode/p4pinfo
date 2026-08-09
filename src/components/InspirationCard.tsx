@@ -41,7 +41,7 @@ export function InspirationCard({
       ) : null}
       {showUser && user ? (
         <p className="inspiration__by">
-          Kindled by{" "}
+          Shared by{" "}
           <Link href={`/u/${user.username}`}>{user.name}</Link>
         </p>
       ) : null}

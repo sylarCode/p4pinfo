@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddInspirationForm } from "@/components/AddInspirationForm";
 import { FollowButton } from "@/components/FollowButton";
-import { InspirationCard } from "@/components/InspirationCard";
+import { ProfileCategories } from "@/components/ProfileCategories";
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/session";
 
@@ -99,32 +99,7 @@ export default async function ProfilePage({ params }: PageProps) {
 
       {isOwnProfile ? <AddInspirationForm categories={categories} /> : null}
 
-      {byCategory.map(({ category, items }) => (
-        <section key={category.id} className="category-block" id={category.slug}>
-          <h2>{category.name}</h2>
-          <p className="category-block__desc">{category.description}</p>
-          {items.length ? (
-            <div className="profile-grid">
-              {items.map((item) => (
-                <InspirationCard
-                  key={item.id}
-                  title={item.title}
-                  description={item.description}
-                  location={item.location}
-                  categoryName={category.name}
-                  tags={item.tags.map((row) => row.tag.name)}
-                />
-              ))}
-            </div>
-          ) : (
-            <p className="empty-state">
-              {isOwnProfile
-                ? `Nothing under ${category.name} yet — add your first inspiration above.`
-                : `No ${category.name.toLowerCase()} shared yet.`}
-            </p>
-          )}
-        </section>
-      ))}
+      <ProfileCategories groups={byCategory} isOwnProfile={isOwnProfile} />
     </div>
   );
 }

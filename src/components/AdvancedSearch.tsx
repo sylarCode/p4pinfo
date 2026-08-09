@@ -110,7 +110,7 @@ export function AdvancedSearch() {
           </label>
           <div className="advanced-search__actions">
             <button type="submit" className="btn btn--primary" disabled={pending}>
-              {pending ? "Searching…" : "Search Kindled"}
+              {pending ? "Searching…" : "Search p4pinfo"}
             </button>
           </div>
         </form>

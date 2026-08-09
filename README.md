@@ -1,12 +1,12 @@
-# Kindled
+# p4pinfo
 
-A social inspiration board where people follow each other and share what they’re kindled by — movies, books, restaurants, useful items, and more.
+A social inspiration board where people follow each other and share what inspires them — movies, books, restaurants, useful items, and more.
 
 ## What’s included
 
 - **Creator-managed categories**: Movies, Books, Restaurants, Useful Items (users cannot create categories)
 - **Homepage**: category chips + advanced search (category, tags, location, keyword)
-- **Profiles**: each category listed with inspirations, custom tags, and optional location
+- **Profiles**: categories with inspirations, custom tags, and optional location — switchable **vertical** or **horizontal** layout
 - **Follow**: demo accounts can follow each other
 - **Custom tags**: e.g. restaurant “The Meat Emporium” in Bali with tags `beef tallow`, `animal based diet`
 

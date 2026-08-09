@@ -210,7 +210,7 @@ async function main() {
     tags: ["stationery", "travel", "analog"],
   });
 
-  console.log("Seeded Kindled with 4 creator categories and demo users.");
+  console.log("Seeded p4pinfo with 4 creator categories and demo users.");
 }
 
 main()

@@ -58,7 +58,7 @@ export default async function HomePage({ searchParams }: PageProps) {
     <>
       <section className="hero site-shell">
         <div className="hero__content">
-          <p className="hero__brand">Kindled</p>
+          <p className="hero__brand">p4pinfo</p>
           <h1 className="hero__headline">
             Follow friends. See what sparks them.
           </h1>
@@ -95,7 +95,7 @@ export default async function HomePage({ searchParams }: PageProps) {
             <p>
               {hasFilters
                 ? "Filtered by the categories, tags, and places you chose."
-                : "Recent inspirations from across Kindled."}
+                : "Recent inspirations from across p4pinfo."}
             </p>
           </div>
           {popularTags.length ? (
@@ -139,7 +139,7 @@ export default async function HomePage({ searchParams }: PageProps) {
       <section className="section site-shell">
         <div className="section__head">
           <div>
-            <h2>{friends.length ? "People you follow" : "People on Kindled"}</h2>
+            <h2>{friends.length ? "People you follow" : "People on p4pinfo"}</h2>
             <p>Profiles organized by creator-managed categories.</p>
           </div>
         </div>

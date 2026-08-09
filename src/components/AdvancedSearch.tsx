@@ -25,11 +25,17 @@ export function AdvancedSearch() {
     const location = String(form.get("location") ?? "").trim();
     const q = String(form.get("q") ?? "").trim();
 
+    const knownCategories = new Set([
+      "movies",
+      "books",
+      "restaurants",
+      "useful-items",
+    ]);
     if (categorySearch) {
       params.set("category", categorySearch);
-    }
-    // Keep selected chip category unless advanced category overrides
-    if (!categorySearch && !params.get("category")) {
+    } else if (!knownCategories.has(params.get("category") ?? "")) {
+      // Clear free-text category searches when the field is emptied;
+      // keep chip selections from the picker above.
       params.delete("category");
     }
 
@@ -65,17 +71,16 @@ export function AdvancedSearch() {
       {open ? (
         <form className="advanced-search__form" onSubmit={onSubmit}>
           <label>
-            <span>Find a category</span>
+            <span>Category name</span>
             <input
               name="categorySearch"
-              placeholder="e.g. restaurants, books…"
+              placeholder="Type a category if it’s not listed above"
               defaultValue={
-                searchParams.get("categorySearch") ??
-                (!["movies", "books", "restaurants", "useful-items"].includes(
+                !["movies", "books", "restaurants", "useful-items"].includes(
                   searchParams.get("category") ?? "",
                 )
                   ? (searchParams.get("category") ?? "")
-                  : "")
+                  : ""
               }
             />
           </label>
@@ -83,7 +88,7 @@ export function AdvancedSearch() {
             <span>Tags</span>
             <input
               name="tags"
-              placeholder="beef tallow, animal based diet"
+              placeholder="Comma-separated, e.g. beef tallow, animal based diet"
               defaultValue={searchParams.get("tags") ?? ""}
             />
           </label>
